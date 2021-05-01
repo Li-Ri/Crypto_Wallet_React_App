@@ -1,0 +1,3 @@
+use cryptos;
+debugger.dropDatabase();
+
