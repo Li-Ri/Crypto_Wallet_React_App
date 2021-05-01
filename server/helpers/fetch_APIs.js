@@ -1,8 +1,8 @@
 require("dotenv").config({ path: "../.env" });
 const axios = require("axios");
-const MongoClient = require("mongo").MongoClient;
-const finage = `https://api.finage.co.uk/last/crypto/detailed/btcusd?apikey=${process.env.API_KEY_FINAGE}`;
-const alpha = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=BTC&interval=5min&apikey=${process.env.API_KEY_ALPHAVANTAGE}`;
+const MongoClient = require("mongodb").MongoClient;
+const finage = `https://api.finage.co.uk/last/crypto/detailed/ethusd?apikey=${process.env.API_KEY_FINAGE}`;
+const alpha = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ETH&interval=5min&apikey=${process.env.API_KEY_ALPHAVANTAGE}`;
 
 const getApi = (url) => {
   return axios.get(url);
@@ -21,9 +21,11 @@ Promise.all([getApi(finage), getApi(alpha)]).then((results) => {
   new_object.symbol = results[0].data.symbol;
   new_object.currentPrice = results[0].data.price;
   new_object.priceChange = results[0].data.changesPercentage;
-  new_object.history = Object.entries(results[1].data["Time Series (5min)"]);
+  MongoClient.connect("mongodb://localhost:27017")
+    .then((client) => {
+      const db = client.db("crypto_db");
+      const cryptosCollection = db.collection("cryptos");
+      cryptosCollection.insertOne(new_object);
+    })
+    .catch((err) => console.error(err));
 });
-
-setTimeout(() => {
-  console.log(new_object);
-}, 4000);
