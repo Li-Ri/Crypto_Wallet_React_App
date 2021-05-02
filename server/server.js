@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const ApiRouter = require("./helpers/ApiRoute.js");
 const UserRouter = require("./helpers/UserRoute.js");
 const cors = require("cors");
 app.use(cors());
 app.use(express.json());
-
+app.use(bodyParser.urlencoded({ extended: true }));
 MongoClient.connect("mongodb://localhost:27017")
   .then((client) => {
     const db = client.db("crypto_db");
