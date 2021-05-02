@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import DashBoard from "./components/DashBoard";
 import Stocks from "./components/Stocks";
 import NavBar from "./components/NavBar";
+
 const App = () => {
   return (
     <Router>
