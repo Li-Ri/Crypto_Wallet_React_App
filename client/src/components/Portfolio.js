@@ -5,7 +5,8 @@ const Portfolio = ({ user, stocks }) => {
   const stockItems = stocks.map((stock) => {
     return <CryptoDetail user={user} stock={stock} />;
   });
-  return { stockItems };
+
+  return <div>{stockItems}</div>;
 };
 
 export default Portfolio;
