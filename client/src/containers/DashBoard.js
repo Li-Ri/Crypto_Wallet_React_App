@@ -25,11 +25,35 @@ const DashBoard = () => {
     return null;
   }
 
+  const addRemoveCash = (event) => {
+    event.preventDefault();
+    const amount = event.target.amount.value;
+    const newObj = {
+      ...user,
+    };
+    newObj.cash += Number(amount);
+    setUser(newObj);
+    UserService.updateUser(newObj);
+  };
+
+  const buySellCrypto = (event) => {
+    const amount = event.target.amount.value;
+    const id = event.target.id.value;
+    const buyCrypto = Cryptos.getCrypto(id);
+    const cost = buyCrypto.currentPrice * amount;
+    const newUser = {
+      ...user,
+    };
+    newUser.portfolio.push(buyCrypto);
+    newUser.cash -= Number(cost);
+    UserService.updateUser(newUser);
+  };
+
   return (
     <>
       <Portfolio user={user} stocks={stocks} />
       <StockValue user={user} stocks={stocks} />
-      <Wallet user={user} />
+      <Wallet user={user} addRemoveCash={addRemoveCash} />
       <Investment user={user} />
     </>
   );

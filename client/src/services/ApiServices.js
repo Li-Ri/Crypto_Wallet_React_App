@@ -4,7 +4,7 @@ export const Cryptos = {
   getCryptos: () => {
     return fetch(baseUrl).then((res) => res.json());
   },
-  showCrypto: (crypto) => {
-    return fetch(baseUrl + crypto._id).then((res) => res.json());
+  getCrypto: (id) => {
+    return fetch(baseUrl + id).then((res) => res.json());
   },
 };
