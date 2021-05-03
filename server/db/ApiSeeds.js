@@ -18,6 +18,7 @@ for (crypto of cryptos) {
   const finage = `https://api.finage.co.uk/last/crypto/detailed/${crypto.toLowerCase()}usd?apikey=${
     process.env.API_KEY_FINAGE
   }`;
+  const alpha = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${crypto}&interval=5min&apikey=2WYDG5TM8YY6G9C6`;
 
   const getApi = (url) => {
     return axios.get(url);
@@ -31,11 +32,12 @@ for (crypto of cryptos) {
     priceChange: 0,
   };
 
-  Promise.all([getApi(finage)]).then((results) => {
+  Promise.all([getApi(finage), getApi(alpha)]).then((results) => {
     new_object.name = results[0].data.name;
     new_object.symbol = results[0].data.symbol;
     new_object.currentPrice = results[0].data.price;
     new_object.priceChange = results[0].data.changesPercentage;
+    new_object.history = results[1].data["Time Series (5min)"];
     MongoClient.connect("mongodb://localhost:27017")
       .then((client) => {
         const db = client.db("crypto_db");
