@@ -13,9 +13,9 @@ const StockValue = ({ user, stocks }) => {
   return (
     <>
       {totalValue == NaN || totalValue === 0 ? null : (
-        <div className="total-value">
-          <h1>Total Stock Value</h1>
-          {totalValue}
+        <div className="stat">
+          <h2>Total Stock Value</h2>
+          <h3>{totalValue}</h3>
         </div>
       )}
     </>

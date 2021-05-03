@@ -3,13 +3,16 @@ import React from "react";
 const Wallet = ({ user, addRemoveCash }) => {
   return (
     <>
-      <h1>{user.cash}</h1>
-      <h2>Add Cash to Account</h2>
-      <form onSubmit={addRemoveCash}>
-        <label htmlFor="amount">Amount</label>
-        <input type="text" id="amount" />
-        <input type="submit" />
-      </form>
+      <div className="stat">
+        <h2>Wallet</h2>
+        <h3>{user.cash}</h3>
+        <h4>Add Cash to Account</h4>
+        <form onSubmit={addRemoveCash}>
+          <label htmlFor="amount">Amount</label>
+          <input type="text" id="amount" />
+          <input type="submit" />
+        </form>
+      </div>
     </>
   );
 };

@@ -57,9 +57,12 @@ header > h1 {
   margin: 5px;
 }
 
-.total-value {
-  border: 1px solid black;
-  margin: 5px;
-  padding: 10px;
-  border-radius: 3px;
+.stat {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 1px 1px 19px 3px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent), #20b2aa;
+  color: white;
 }
