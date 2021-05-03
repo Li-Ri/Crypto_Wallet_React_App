@@ -7,7 +7,8 @@ const CryptoDetail = ({ user, stock }) => {
   }
   return (
     <>
-      <h2>Stock Owned:{userStock}</h2>
+      <h4>Stock Owned:{userStock}</h4>
+      <h4>Value: {userStock ? userStock * stock.currentPrice : null}</h4>
       <h1>{stock.name}</h1>
       <h3>{stock.symbol}</h3>
       <h3>Current Price: {stock.currentPrice}</h3>
