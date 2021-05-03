@@ -6,6 +6,7 @@ import StockValue from "../components/StockValue";
 import Stocks from "../components/Stocks";
 import Wallet from "../components/Wallet";
 import Investment from "../components/Investment";
+import BuySellCrypto from "../components/BuySellCrypto";
 
 const DashBoard = () => {
   const [stocks, setStocks] = useState([]);
@@ -37,16 +38,21 @@ const DashBoard = () => {
   };
 
   const buySellCrypto = (event) => {
-    const amount = event.target.amount.value;
+    event.preventDefault();
+    const amount = Number(event.target.amount.value);
+    console.log(amount);
     const id = event.target.id.value;
-    const buyCrypto = Cryptos.getCrypto(id);
-    const cost = buyCrypto.currentPrice * amount;
-    const newUser = {
-      ...user,
-    };
-    newUser.portfolio.push(buyCrypto);
-    newUser.cash -= Number(cost);
-    UserService.updateUser(newUser);
+    const buyCrypto = Cryptos.getCrypto(id).then((cryptoObj) => {
+      const cost = Number(cryptoObj.currentPrice) * amount;
+      const newUser = {
+        ...user,
+      };
+      newUser.portfolio.push(cryptoObj);
+      newUser.cash -= Number(cost);
+      newUser.invested += Number(cost);
+      setUser(newUser);
+      UserService.updateUser(newUser);
+    });
   };
 
   return (
@@ -55,6 +61,7 @@ const DashBoard = () => {
       <StockValue user={user} stocks={stocks} />
       <Wallet user={user} addRemoveCash={addRemoveCash} />
       <Investment user={user} />
+      <BuySellCrypto buySellCrypto={buySellCrypto} stocks={stocks} />
     </>
   );
 };
