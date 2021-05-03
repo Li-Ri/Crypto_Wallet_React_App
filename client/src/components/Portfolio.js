@@ -8,7 +8,11 @@ const Portfolio = ({ user, stocks }) => {
       return <CryptoDetail user={user} stock={stock} key={index} />;
     });
   }
-  return <>{userStockItems}</>;
+  return (
+    <>
+      <div className="portfolio">{userStockItems}</div>
+    </>
+  );
 };
 
 export default Portfolio;

@@ -58,11 +58,15 @@ const DashBoard = () => {
 
   return (
     <>
-      <Portfolio user={user} stocks={stocks} />
-      <StockValue user={user} stocks={stocks} />
-      <Wallet user={user} addRemoveCash={addRemoveCash} />
-      <Investment user={user} />
-      <BuySellCrypto buySellCrypto={buySellCrypto} stocks={stocks} />
+      <div className="dash-container">
+        <Portfolio user={user} stocks={stocks} />
+        <div className="user-stats">
+          <StockValue user={user} stocks={stocks} />
+          <Wallet user={user} addRemoveCash={addRemoveCash} />
+          <Investment user={user} />
+          <BuySellCrypto buySellCrypto={buySellCrypto} stocks={stocks} />
+        </div>
+      </div>
     </>
   );
 };

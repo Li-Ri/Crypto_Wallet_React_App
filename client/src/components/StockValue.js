@@ -10,7 +10,16 @@ const StockValue = ({ user, stocks }) => {
   }, 0);
 
   console.log(totalValue);
-  return <>{totalValue == NaN || totalValue === 0 ? null : totalValue}</>;
+  return (
+    <>
+      {totalValue == NaN || totalValue === 0 ? null : (
+        <div className="total-value">
+          <h1>Total Stock Value</h1>
+          {totalValue}
+        </div>
+      )}
+    </>
+  );
 };
 
 export default StockValue;
