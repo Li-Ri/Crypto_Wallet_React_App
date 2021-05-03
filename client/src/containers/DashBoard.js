@@ -5,6 +5,7 @@ import Portfolio from "../components/Portfolio";
 import StockValue from "../components/StockValue";
 import Stocks from "../components/Stocks";
 import Wallet from "../components/Wallet";
+import Investment from "../components/Investment";
 
 const DashBoard = () => {
   const [stocks, setStocks] = useState([]);
@@ -29,6 +30,7 @@ const DashBoard = () => {
       <Portfolio user={user} stocks={stocks} />
       <StockValue user={user} stocks={stocks} />
       <Wallet user={user} />
+      <Investment user={user} />
     </>
   );
 };

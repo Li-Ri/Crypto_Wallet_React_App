@@ -7,3 +7,4 @@ const Investment = ({ user }) => {
     </>
   );
 };
+export default Investment;
