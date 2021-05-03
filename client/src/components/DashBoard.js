@@ -8,7 +8,6 @@ const DashBoard = () => {
   const fetchStock = () => {
     Cryptos.getCryptos().then((cryptos) => setStocks(cryptos));
   };
-
   useEffect(() => {
     fetchStock();
   }, []);
