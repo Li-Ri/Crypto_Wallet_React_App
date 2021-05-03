@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Cryptos } from "../services/ApiServices";
 import { UserService } from "../services/UserServices";
 import Portfolio from "../components/Portfolio";
+import StockValue from "../components/StockValue";
+import Stocks from "../components/Stocks";
+import Wallet from "../components/Wallet";
 
 const DashBoard = () => {
   const [stocks, setStocks] = useState([]);
@@ -17,10 +20,15 @@ const DashBoard = () => {
     fetchStock();
     fetchUser();
   }, []);
+  if (!user || !stocks) {
+    return null;
+  }
 
   return (
     <>
       <Portfolio user={user} stocks={stocks} />
+      <StockValue user={user} stocks={stocks} />
+      <Wallet user={user} />
     </>
   );
 };

@@ -3,7 +3,7 @@ import CryptoDetail from "./CryptoDetail";
 
 const Portfolio = ({ user, stocks }) => {
   let userStockItems;
-  if (user.portfolio) {
+  if (user.portfolio !== undefined) {
     userStockItems = user.portfolio.map((stock) => {
       return <CryptoDetail user={user} stock={stock} />;
     });
