@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import DashBoard from "./components/DashBoard";
+import DashBoard from "./containers/DashBoard";
 import Stocks from "./components/Stocks";
 import NavBar from "./components/NavBar";
 
