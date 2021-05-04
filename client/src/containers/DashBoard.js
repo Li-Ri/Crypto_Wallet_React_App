@@ -51,9 +51,9 @@ const DashBoard = () => {
         newUser.portfolio.push(cryptoObj);
         newUser.stock_units[cryptoObj.symbol] = amount;
       }
-      const cost = Number(cryptoObj.currentPrice) * amount;
-      newUser.cash -= Number(cost);
-      newUser.invested += Number(cost);
+      const cost = cryptoObj.currentPrice * amount;
+      newUser.cash -= cost;
+      newUser.invested += cost;
       setUser(newUser);
       UserService.updateUser(newUser);
     });

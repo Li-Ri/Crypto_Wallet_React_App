@@ -1,10 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import FakeStock from "fake-stock-market-generator";
 
 const LineChart = ({ title, symbol, history }) => {
-  let stockData = FakeStock.generateStockData(20);
-  const stockArray = stockData.priceData.map((data) => data.price);
   const realData = history.map((price) => price.high);
   const backgroundColor =
     realData[49] > realData[48]
@@ -31,11 +28,23 @@ const LineChart = ({ title, symbol, history }) => {
     scales: {
       yAxes: [
         {
-          ticks: {
-            beginAtZero: true,
+          gridLines: {
+            display: false,
           },
         },
       ],
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+          },
+        },
+      ],
+    },
+    elements: {
+      point: {
+        radius: 0,
+      },
     },
   };
 

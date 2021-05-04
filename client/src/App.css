@@ -80,13 +80,8 @@ header > h1 {
 
 .stock-container {
   display: flex;
-  height: 6%;
 }
 
-.chart {
-  height: 600px;
-  width: 600px;
-}
 .stock-data {
-  margin: auto;
+  margin: auto 0;
 }
