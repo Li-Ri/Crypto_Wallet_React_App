@@ -118,7 +118,7 @@ const DashBoard = () => {
   return (
     <>
       <div className="dash-container">
-        <Portfolio user={user} stocks={stocks} />
+        <Portfolio user={user} stocks={stocks} stockData={stockData} />
         <div className="user-stats">
           <StockValue user={user} stocks={stocks} />
           <Wallet user={user} addRemoveCash={addRemoveCash} />

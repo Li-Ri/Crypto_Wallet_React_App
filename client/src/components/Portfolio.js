@@ -1,7 +1,7 @@
 import React from "react";
 import CryptoDetail from "./CryptoDetail";
 
-const Portfolio = ({ user, stocks }) => {
+const Portfolio = ({ user, stocks, stockData }) => {
   let userStockItems;
 
   if (user.portfolio !== undefined) {

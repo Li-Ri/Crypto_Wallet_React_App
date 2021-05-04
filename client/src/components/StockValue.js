@@ -1,6 +1,6 @@
 import React from "react";
 
-const StockValue = ({ user, stocks }) => {
+const StockValue = ({ user, stocks, stockData }) => {
   let stocksInvested;
   let totalValue = stocks.reduce((accum, current) => {
     if (user.stock_units && user.stock_units[current.symbol] !== undefined) {

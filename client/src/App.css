@@ -85,3 +85,7 @@ header > h1 {
 .stock-data {
   margin: auto 0;
 }
+
+.hidden {
+  display: none;
+}
