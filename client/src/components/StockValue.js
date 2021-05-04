@@ -14,7 +14,7 @@ const StockValue = ({ user, stocks }) => {
       {totalValue == NaN || totalValue === 0 ? null : (
         <div className="stat">
           <h2>Total Stock Value</h2>
-          <h3>{totalValue.toFixed(2)}</h3>
+          <h3>${totalValue.toFixed(2)}</h3>
         </div>
       )}
     </>
