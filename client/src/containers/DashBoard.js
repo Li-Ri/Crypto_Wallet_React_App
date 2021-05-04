@@ -8,22 +8,49 @@ import Wallet from "../components/Wallet";
 import Investment from "../components/Investment";
 import BuySellCrypto from "../components/BuySellCrypto";
 import ProfitLoss from "../components/ProfitLoss";
-
+import fetch from "node-fetch";
 
 const DashBoard = () => {
   const [stocks, setStocks] = useState([]);
   const [user, setUser] = useState({});
-
+  const [stockData, setStockData] = useState([]);
   const fetchStock = () => {
     Cryptos.getCryptos().then((cryptos) => setStocks(cryptos));
   };
   const fetchUser = () => {
     UserService.getUsers().then((users) => setUser(users[0]));
   };
+
+  const fetchStockData = async () => {
+    const cryptos = [
+      "ETH",
+      "BTC",
+      "DASH",
+      "LTC",
+      "BCH",
+      "NEO",
+      "EOS",
+      "BTG",
+      "XMR",
+      "DASH",
+      "BTG",
+    ];
+    const finalArr = [];
+    for (const crypto of cryptos) {
+      const response = await fetch(
+        `https://min-api.cryptocompare.com/data/v2/histominute?fsym=${crypto}&tsym=USD&limit=50&apikey=73d9942c2e64587f8d08f7b28057a8cf20c35fb6e7b7dd401d5ed7ad3d0a9fbe`
+      );
+      const json = await response.json();
+      finalArr.push(json.Data.Data);
+    }
+    setStockData(finalArr);
+  };
   useEffect(() => {
     fetchStock();
     fetchUser();
+    fetchStockData();
   }, []);
+
   if (!user || !stocks) {
     return null;
   }
