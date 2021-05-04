@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import CryptoDetail from "./CryptoDetail";
+import CryptoItem from "./CryptoItem";
 import {Cryptos} from '../services/ApiServices'
 
 const Stocks = () => {
@@ -13,15 +13,15 @@ const Stocks = () => {
   useEffect(() => {
     fetchStock();
   }, [])
-//   let StocksItems;
-// if (stocks){
-//   StocksItems = stocks.map((stock, index) => {
-//     return <CryptoDetail stock = {stock} key = {index} />
-//   })
-// }
+  let StocksItems;
+if (stocks){
+  StocksItems = stocks.map((stock, index) => {
+    return <CryptoItem stock = {stock} key = {index} />
+  })
+}
     return(
       <div>
-        {/* <p>{StocksItems}</p> */}
+        <p>{StocksItems}</p>
       </div>
     );
   }
