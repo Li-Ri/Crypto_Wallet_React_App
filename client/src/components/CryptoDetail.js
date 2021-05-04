@@ -10,7 +10,7 @@ const CryptoDetail = ({ user, stock }) => {
     <>
       <div className="stock-container">
         <div className="stock-data">
-          <h4>Stock Owned:{userStock.toFixed(5)}</h4>
+          <h4>Stock Owned:{userStock.toFixed(15)}</h4>
           <h4>
             Value:{" "}
             {userStock ? (userStock * stock.currentPrice).toFixed(3) : null}
