@@ -6,7 +6,14 @@ const Portfolio = ({ user, stocks, stockData }) => {
 
   if (user.portfolio !== undefined) {
     userStockItems = user.portfolio.map((stock, index) => {
-      return <CryptoDetail user={user} stock={stock} key={index} />;
+      return (
+        <CryptoDetail
+          user={user}
+          stock={stock}
+          key={index}
+          stockData={stockData}
+        />
+      );
     });
   }
   return (

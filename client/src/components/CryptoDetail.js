@@ -22,6 +22,7 @@ const CryptoDetail = ({ user, stock, stockData }) => {
           title={stock.name}
           symbol={stock.symbol}
           history={stock.history}
+          stockData={stockData}
         />
       </div>
     </>
