@@ -1,14 +1,9 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-<<<<<<< HEAD
 
 
 const LineChart = ({ title, symbol, history }) => {
 
-=======
-
-const LineChart = ({ title, symbol, history }) => {
->>>>>>> 0dc99826143cf4c45b53bf0d3539d33eb4523342
   const realData = history.map((price) => price.high);
   const backgroundColor =
     realData[49] > realData[48]

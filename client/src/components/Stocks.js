@@ -1,7 +1,33 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import CryptoDetail from "./CryptoDetail";
+import {Cryptos} from '../services/ApiServices'
 
 const Stocks = () => {
-  return <h1>This is my Stocks page</h1>;
-};
+
+  const [stocks, setStocks] = useState([]);
+
+  const fetchStock = () => {
+    Cryptos.getCryptos().then((cryptos) => setStocks(cryptos));
+  };
+  
+  useEffect(() => {
+    fetchStock();
+  }, [])
+//   let StocksItems;
+// if (stocks){
+//   StocksItems = stocks.map((stock, index) => {
+//     return <CryptoDetail stock = {stock} key = {index} />
+//   })
+// }
+    return(
+      <div>
+        {/* <p>{StocksItems}</p> */}
+      </div>
+    );
+  }
+
+
+
+
 
 export default Stocks;

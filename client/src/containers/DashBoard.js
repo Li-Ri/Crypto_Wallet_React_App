@@ -9,6 +9,7 @@ import Investment from "../components/Investment";
 import BuySellCrypto from "../components/BuySellCrypto";
 import ProfitLoss from "../components/ProfitLoss";
 
+
 const DashBoard = () => {
   const [stocks, setStocks] = useState([]);
   const [user, setUser] = useState({});
@@ -96,6 +97,7 @@ const DashBoard = () => {
           <Wallet user={user} addRemoveCash={addRemoveCash} />
           <Investment user={user} />
           <ProfitLoss user={user} stocks={stocks} />
+          {/* <Stocks stocks = {stocks}/> */}
           <BuySellCrypto
             buySellCrypto={buySellCrypto}
             stocks={stocks}
