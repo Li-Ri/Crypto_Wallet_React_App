@@ -7,6 +7,7 @@ import Stocks from "../components/Stocks";
 import Wallet from "../components/Wallet";
 import Investment from "../components/Investment";
 import BuySellCrypto from "../components/BuySellCrypto";
+import ProfitLoss from "../components/ProfitLoss";
 
 const DashBoard = () => {
   const [stocks, setStocks] = useState([]);
@@ -45,20 +46,47 @@ const DashBoard = () => {
       const newUser = {
         ...user,
       };
+      const cost = cryptoObj.currentPrice * amount;
+      if (newUser.cash < cost) {
+        return;
+      }
+
       if (user.stock_units[cryptoObj.symbol] !== undefined) {
         newUser.stock_units[cryptoObj.symbol] += amount;
       } else {
         newUser.portfolio.push(cryptoObj);
         newUser.stock_units[cryptoObj.symbol] = amount;
       }
-      const cost = Number(cryptoObj.currentPrice) * amount;
-      newUser.cash -= Number(cost);
-      newUser.invested += Number(cost);
+
+      newUser.cash -= cost;
+      newUser.invested += cost;
       setUser(newUser);
       UserService.updateUser(newUser);
     });
+    event.target.reset();
   };
 
+  const sellStock = (event) => {
+    event.preventDefault();
+    const id = event.target.id.value;
+    const amount = event.target.amount.value;
+    const buyCrypto = Cryptos.getCrypto(id).then((cryptoObj) => {
+      const newUser = {
+        ...user,
+      };
+
+      if (amount > newUser.stock_units[cryptoObj.symbol]) {
+        return;
+      }
+      const cost = cryptoObj.currentPrice * amount;
+      newUser.cash += cost;
+      newUser.stock_units[cryptoObj.symbol] -= amount;
+      newUser.invested -= cost;
+      setUser(newUser);
+      UserService.updateUser(newUser);
+    });
+    event.target.reset();
+  };
   return (
     <>
       <div className="dash-container">
@@ -67,7 +95,13 @@ const DashBoard = () => {
           <StockValue user={user} stocks={stocks} />
           <Wallet user={user} addRemoveCash={addRemoveCash} />
           <Investment user={user} />
-          <BuySellCrypto buySellCrypto={buySellCrypto} stocks={stocks} />
+          <ProfitLoss user={user} stocks={stocks} />
+          <BuySellCrypto
+            buySellCrypto={buySellCrypto}
+            stocks={stocks}
+            user={user}
+            sellStock={sellStock}
+          />
         </div>
       </div>
     </>

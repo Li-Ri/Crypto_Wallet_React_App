@@ -3,8 +3,10 @@ import React from "react";
 const Investment = ({ user }) => {
   return (
     <>
-      <h1>Investment</h1>
-      <h1>{user.invested}</h1>
+      <div className="stat">
+        <h2>Investment</h2>
+        <h3>${user.invested ? user.invested.toFixed(2) : null}</h3>
+      </div>
     </>
   );
 };
