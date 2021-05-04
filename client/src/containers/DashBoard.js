@@ -63,8 +63,26 @@ const DashBoard = () => {
       setUser(newUser);
       UserService.updateUser(newUser);
     });
+    event.target.reset();
   };
 
+  const sellStock = (event) => {
+    event.preventDefault();
+    const id = event.target.id.value;
+    const amount = event.target.amount.value;
+    const buyCrypto = Cryptos.getCrypto(id).then((cryptoObj) => {
+      const newUser = {
+        ...user,
+      };
+      const cost = cryptoObj.currentPrice * amount;
+      newUser.cash += cost;
+      newUser.stock_units[cryptoObj.symbol] -= amount;
+      newUser.invested -= cost;
+      setUser(newUser);
+      UserService.updateUser(newUser);
+    });
+    event.target.reset();
+  };
   return (
     <>
       <div className="dash-container">
@@ -74,7 +92,12 @@ const DashBoard = () => {
           <Wallet user={user} addRemoveCash={addRemoveCash} />
           <Investment user={user} />
           <ProfitLoss user={user} stocks={stocks} />
-          <BuySellCrypto buySellCrypto={buySellCrypto} stocks={stocks} />
+          <BuySellCrypto
+            buySellCrypto={buySellCrypto}
+            stocks={stocks}
+            user={user}
+            sellStock={sellStock}
+          />
         </div>
       </div>
     </>
