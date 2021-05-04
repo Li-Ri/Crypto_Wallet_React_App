@@ -74,6 +74,10 @@ const DashBoard = () => {
       const newUser = {
         ...user,
       };
+
+      if (amount > newUser.stock_units[cryptoObj.symbol]) {
+        return;
+      }
       const cost = cryptoObj.currentPrice * amount;
       newUser.cash += cost;
       newUser.stock_units[cryptoObj.symbol] -= amount;
