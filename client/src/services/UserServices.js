@@ -4,4 +4,11 @@ export const UserService = {
   getUsers: () => {
     return fetch(baseUrl).then((res) => res.json());
   },
+  updateUser: (user) => {
+    return fetch(baseUrl + user._id, {
+      method: "PUT",
+      body: JSON.stringify(user),
+      headers: { "Content-type": "application/json" },
+    }).then((res) => res.json());
+  },
 };
