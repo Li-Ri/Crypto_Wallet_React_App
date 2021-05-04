@@ -40,17 +40,20 @@ const DashBoard = () => {
   const buySellCrypto = (event) => {
     event.preventDefault();
     const amount = Number(event.target.amount.value);
-    console.log(amount);
     const id = event.target.id.value;
     const buyCrypto = Cryptos.getCrypto(id).then((cryptoObj) => {
-      const cost = Number(cryptoObj.currentPrice) * amount;
       const newUser = {
         ...user,
       };
-      newUser.portfolio.push(cryptoObj);
+      if (user.stock_units[cryptoObj.symbol] !== undefined) {
+        newUser.stock_units[cryptoObj.symbol] += amount;
+      } else {
+        newUser.portfolio.push(cryptoObj);
+        newUser.stock_units[cryptoObj.symbol] = amount;
+      }
+      const cost = Number(cryptoObj.currentPrice) * amount;
       newUser.cash -= Number(cost);
       newUser.invested += Number(cost);
-      newUser.stock_units[cryptoObj.symbol] = amount;
       setUser(newUser);
       UserService.updateUser(newUser);
     });
