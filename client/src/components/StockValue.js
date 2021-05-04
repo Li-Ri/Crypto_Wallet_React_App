@@ -9,7 +9,6 @@ const StockValue = ({ user, stocks }) => {
     return accum;
   }, 0);
 
-  console.log(totalValue);
   return (
     <>
       {totalValue == NaN || totalValue === 0 ? null : (
