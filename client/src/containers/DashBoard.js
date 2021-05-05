@@ -20,7 +20,7 @@ const DashBoard = () => {
     UserService.getUsers().then((users) => setUser(users[0]));
   };
 
- const fetchStockData = async () => {
+const fetchStockData = async () => {
     const cryptos = [
       "ETH",
       "BTC",
