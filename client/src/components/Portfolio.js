@@ -15,6 +15,7 @@ const Portfolio = ({ user, stocks }) => {
             stocks={stocks}
           />
         );
+
       }
     });
   }
