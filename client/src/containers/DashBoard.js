@@ -87,21 +87,23 @@ const fetchStockData = async () => {
     const amount = Number(event.target.amount.value);
     const name = event.target.id.value;
     const cryptoObj = stocks.find((stock) => stock.name == name);
+    const cost = cryptoObj ? cryptoObj.currentPrice * amount : 0;
     const newUser = {
       ...user,
     };
-    const cost = cryptoObj.currentPrice * amount;
-    if (newUser.cash < cost) {
+    
+    if (!cryptoObj || newUser.cash < cost) {
       return;
     }
 
     if (user.stock_units[cryptoObj.symbol] !== undefined) {
+      
       newUser.stock_units[cryptoObj.symbol] += amount;
     } else {
       newUser.portfolio.push(cryptoObj);
       newUser.stock_units[cryptoObj.symbol] = amount;
     }
-
+    
     newUser.cash -= cost;
     newUser.invested += cost;
     setUser(newUser);
@@ -118,7 +120,7 @@ const fetchStockData = async () => {
     const newUser = {
       ...user,
     };
-    if (amount > newUser.stock_units[cryptoObj.symbol]) {
+    if (!cryptoObj || amount > newUser.stock_units[cryptoObj.symbol]) {
       return;
     }
     const cost = cryptoObj.currentPrice * amount;
