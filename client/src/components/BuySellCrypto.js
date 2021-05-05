@@ -25,7 +25,7 @@ const BuySellCrypto = ({ buySellCrypto, stocks, user, sellStock }) => {
   if (user.portfolio) {
     sellOptions = user.portfolio.map((stock, index) => {
       return (
-        <option value={stock._id} key={index}>
+        <option value={stock.name} key={index}>
           {stock.symbol}
         </option>
       );
