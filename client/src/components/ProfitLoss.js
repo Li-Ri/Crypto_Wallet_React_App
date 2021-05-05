@@ -9,7 +9,7 @@ const ProfitLoss = ({ stocks, user }) => {
     return accum;
   }, 0);
   const profitLoss = () => {
-    return (totalValue / 2 - user.invested).toFixed(2);
+    return (totalValue - user.invested).toFixed(2);
   };
   return (
     <>
