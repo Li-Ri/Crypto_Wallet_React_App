@@ -1,18 +1,32 @@
-import React from "react";
-
-const CryptoDetail = ({ user, stock }) => {
+import React, { useEffect } from "react";
+import LineChart from "../components/LineChart";
+const CryptoDetail = ({ user, stock, stocks }) => {
   let userStock;
+
+  const foundStock = stocks.find(crypto => crypto.name === stock.name)
   if (user.stock_units !== undefined) {
     userStock = user.stock_units[stock.symbol];
   }
+
   return (
     <>
-      <h4>Stock Owned:{userStock}</h4>
-      <h4>Value: {userStock ? userStock * stock.currentPrice : null}</h4>
-      <h1>{stock.name}</h1>
-      <h3>{stock.symbol}</h3>
-      <h3>Current Price: {stock.currentPrice}</h3>
-      <h3>Price Change: {stock.priceChange}</h3>
+      <div className="stock-container">
+        <div className="stock-data">
+          <h4>Stock Owned:{userStock ? userStock.toFixed(5) : null}</h4>
+          <h4>
+            Value:
+            {userStock ? (userStock * stock.currentPrice).toFixed(3) : null}
+          </h4>
+          <h3>Current Price:{foundStock ? foundStock.currentPrice.toFixed(2):null}</h3>
+          <h3>Price Change: {foundStock ? foundStock.priceChange: null}%</h3>
+        </div>
+        <LineChart
+          title={stock.name}
+          symbol={stock.symbol}
+          history={stock.history}
+         
+        />
+      </div>
     </>
   );
 };

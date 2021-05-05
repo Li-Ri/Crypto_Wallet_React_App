@@ -1,3 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
+}
+
+/* NavBar */
+header {
+  background-color: #008080;
+  color: white;
+  text-align: center;
+}
+
+header > h1 {
+  padding: 5px;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 6px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.main-nav a:hover,
+.main-nav a:active {
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+/* DashBoard */
+
+/* Portfolio */
+.dash-container {
+  display: flex;
+  flex-wrap: row nowrap;
+}
+
+.portfolio {
+  width: 60%;
+  text-align: center;
+  margin: 5px;
+}
+
+.user-stats {
+  width: 39%;
+  margin: 5px;
+}
+
+.stat {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 1px 1px 19px 3px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent), #20b2aa;
+  color: white;
+}
+
+.stat h3 {
+  background-color: white;
+  color: #008080;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 8px;
+  font-weight: 23px;
+}
+
+/* portfolio container */
+
+.stock-container {
+  display: flex;
+  width: 100%;
+}
+
+.stock-data {
+  margin: auto 0;
+}
+
+.chart {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  border: none;
+  background: #008080;
+  color: white;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: bold;
 }
