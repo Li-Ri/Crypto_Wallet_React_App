@@ -2,7 +2,7 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 const LineChart = ({ title, symbol, history, stockData }) => {
-  const realData = history.map((price) => price.high);
+  const realData = history.map((price) => price.close);
   const backgroundColor =
     realData[49] > realData[48]
       ? "rgba(35, 203, 167, 0.7)"

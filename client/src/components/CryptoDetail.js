@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import LineChart from "../components/LineChart";
-const CryptoDetail = ({ user, stock, stockData }) => {
+const CryptoDetail = ({ user, stock, stocks }) => {
   let userStock;
+
+  const foundStock = stocks.find(crypto => crypto.name === stock.name)
   if (user.stock_units !== undefined) {
     userStock = user.stock_units[stock.symbol];
   }
@@ -15,14 +17,14 @@ const CryptoDetail = ({ user, stock, stockData }) => {
             Value:
             {userStock ? (userStock * stock.currentPrice).toFixed(3) : null}
           </h4>
-          <h3>Current Price: ${stock.currentPrice.toFixed(2)}</h3>
-          <h3>Price Change: {stock.priceChange}%</h3>
+          <h3>Current Price:{foundStock ? foundStock.currentPrice.toFixed(2):null}</h3>
+          <h3>Price Change: {foundStock ? foundStock.priceChange: null}%</h3>
         </div>
         <LineChart
           title={stock.name}
           symbol={stock.symbol}
           history={stock.history}
-          stockData={stockData}
+         
         />
       </div>
     </>

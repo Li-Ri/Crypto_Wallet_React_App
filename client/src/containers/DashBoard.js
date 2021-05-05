@@ -9,11 +9,12 @@ import Investment from "../components/Investment";
 import BuySellCrypto from "../components/BuySellCrypto";
 import ProfitLoss from "../components/ProfitLoss";
 import fetch from "node-fetch";
+import env from 'react-dotenv'
 
 const DashBoard = () => {
   const [stocks, setStocks] = useState([]);
   const [user, setUser] = useState({});
-  const [stockData, setStockData] = useState([]);
+ 
 
   const fetchUser = () => {
     UserService.getUsers().then((users) => setUser(users[0]));
@@ -49,13 +50,12 @@ const DashBoard = () => {
       );
       const json = await response.json();
       const responseFinage = await fetch(
-        `https://api.finage.co.uk/last/crypto/detailed/${crypto.toLowerCase()}usd?apikey=API_KEY93ZMCKQASCGULMKIAJ8TMTHIDB8MF0NL`
+        `https://api.finage.co.uk/last/crypto/detailed/${crypto.toLowerCase()}usd?apikey=API_KEY09COSHVGIAFJRSHBZFFM71RUY6GJ1NVQ`
       );
       const jsonFinage = await responseFinage.json();
-      console.log(jsonFinage);
       new_object.name = await jsonFinage.name;
       new_object.symbol = await jsonFinage.symbol;
-      new_object.currentPrice = await jsonFinage.price;
+      new_object.currentPrice = await json.Data.Data[0].close;
       new_object.priceChange = await jsonFinage.changesPercentage;
       new_object.history = await json.Data.Data;
       stocksFinal.push(new_object);
@@ -85,50 +85,49 @@ const DashBoard = () => {
   const buySellCrypto = (event) => {
     event.preventDefault();
     const amount = Number(event.target.amount.value);
-    const id = event.target.id.value;
-    const buyCrypto = Cryptos.getCrypto(id).then((cryptoObj) => {
-      const newUser = {
-        ...user,
-      };
-      const cost = cryptoObj.currentPrice * amount;
-      if (newUser.cash < cost) {
-        return;
-      }
+    const name = event.target.id.value;
+    const cryptoObj = stocks.find((stock) => stock.name == name);
+    const newUser = {
+      ...user,
+    };
+    const cost = cryptoObj.currentPrice * amount;
+    if (newUser.cash < cost) {
+      return;
+    }
 
-      if (user.stock_units[cryptoObj.symbol] !== undefined) {
-        newUser.stock_units[cryptoObj.symbol] += amount;
-      } else {
-        newUser.portfolio.push(cryptoObj);
-        newUser.stock_units[cryptoObj.symbol] = amount;
-      }
+    if (user.stock_units[cryptoObj.symbol] !== undefined) {
+      newUser.stock_units[cryptoObj.symbol] += amount;
+    } else {
+      newUser.portfolio.push(cryptoObj);
+      newUser.stock_units[cryptoObj.symbol] = amount;
+    }
 
-      newUser.cash -= cost;
-      newUser.invested += cost;
-      setUser(newUser);
-      UserService.updateUser(newUser);
-    });
+    newUser.cash -= cost;
+    newUser.invested += cost;
+    setUser(newUser);
+    UserService.updateUser(newUser);
+
     event.target.reset();
   };
 
   const sellStock = (event) => {
     event.preventDefault();
-    const id = event.target.id.value;
+    const name = event.target.id.value;
     const amount = event.target.amount.value;
-    const buyCrypto = Cryptos.getCrypto(id).then((cryptoObj) => {
-      const newUser = {
-        ...user,
-      };
+    const cryptoObj = stocks.find((stock) => stock.name == name);
+    const newUser = {
+      ...user,
+    };
+    if (amount > newUser.stock_units[cryptoObj.symbol]) {
+      return;
+    }
+    const cost = cryptoObj.currentPrice * amount;
+    newUser.cash += cost;
+    newUser.stock_units[cryptoObj.symbol] -= amount;
+    newUser.invested -= cost;
+    setUser(newUser);
+    UserService.updateUser(newUser);
 
-      if (amount > newUser.stock_units[cryptoObj.symbol]) {
-        return;
-      }
-      const cost = cryptoObj.currentPrice * amount;
-      newUser.cash += cost;
-      newUser.stock_units[cryptoObj.symbol] -= amount;
-      newUser.invested -= cost;
-      setUser(newUser);
-      UserService.updateUser(newUser);
-    });
     event.target.reset();
   };
   return (
