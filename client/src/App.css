@@ -90,6 +90,8 @@ header > h1 {
   background-color: none;
   transition: background-color 2s;
   border-radius: 8px;
+  font-family: inherit;
+  color: #008080;
 }
 
 .stock-container:hover,

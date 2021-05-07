@@ -52,9 +52,9 @@ const LineChart = ({ title, symbol, history, stockData }) => {
     <>
       <div className="chart">
         <div>
-          <h1 className="title">
+          <h2 className="title">
             {title} ({symbol})
-          </h1>
+          </h2>
           <div className="links"></div>
         </div>
         <Line data={data} options={options} />
