@@ -6,10 +6,10 @@ const NavBar = () => {
     <header className="header">
       <h1>CryptoBite</h1>
       <ul className="main-nav">
-        <li className="main-nav__link">
+        <li data-testid="nav-link" className="main-nav__link">
           <Link to="/">DashBoard</Link>
         </li>
-        <li className="main-nav__link">
+        <li data-testid="nav-link" className="main-nav__link">
           <Link to="/stocks">Stock</Link>
         </li>
       </ul>

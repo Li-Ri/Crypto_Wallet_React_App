@@ -14,6 +14,11 @@ header {
   text-align: center;
 }
 
+#main-title {
+  color: #008080;
+  font-family: Tahoma, sans-serif;
+}
+
 header > h1 {
   padding: 5px;
 }
@@ -48,7 +53,9 @@ header > h1 {
 .portfolio {
   width: 60%;
   text-align: center;
-  margin: 5px;
+  margin: 8px;
+  border-radius: 12px;
+  box-shadow: 1px 1px 19px 3px rgba(0, 0, 0, 0.2);
 }
 
 .user-stats {
@@ -80,14 +87,30 @@ header > h1 {
 .stock-container {
   display: flex;
   width: 100%;
+  background-color: none;
+  transition: background-color 2s;
+  border-radius: 8px;
+}
+
+.stock-container:hover,
+.stock-container:active {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  color: white;
 }
 
 .stock-data {
   margin: auto 0;
+  position: relative;
+  top: 40%;
+  right: 55%;
+  height: 50%;
+  color: white;
 }
 
 .chart {
   width: 100%;
+  padding: 5px 10px;
 }
 
 .hidden {
@@ -102,4 +125,16 @@ button {
   margin-top: 5px;
   font-size: 16px;
   font-weight: bold;
+}
+
+input[type="text"] {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid white;
+}
+
+input[type="number"] {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid white;
 }

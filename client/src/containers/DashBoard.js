@@ -9,18 +9,16 @@ import Investment from "../components/Investment";
 import BuySellCrypto from "../components/BuySellCrypto";
 import ProfitLoss from "../components/ProfitLoss";
 import fetch from "node-fetch";
-import env from 'react-dotenv'
 
 const DashBoard = () => {
   const [stocks, setStocks] = useState([]);
   const [user, setUser] = useState({});
- 
 
   const fetchUser = () => {
     UserService.getUsers().then((users) => setUser(users[0]));
   };
 
-const fetchStockData = async () => {
+  const fetchStockData = async () => {
     const cryptos = [
       "ETH",
       "BTC",
@@ -91,19 +89,18 @@ const fetchStockData = async () => {
     const newUser = {
       ...user,
     };
-    
+
     if (!cryptoObj || newUser.cash < cost) {
       return;
     }
 
     if (user.stock_units[cryptoObj.symbol] !== undefined) {
-      
       newUser.stock_units[cryptoObj.symbol] += amount;
     } else {
       newUser.portfolio.push(cryptoObj);
       newUser.stock_units[cryptoObj.symbol] = amount;
     }
-    
+
     newUser.cash -= cost;
     newUser.invested += cost;
     setUser(newUser);
@@ -134,6 +131,9 @@ const fetchStockData = async () => {
   };
   return (
     <>
+      <h1 data-testid="dashboard-title" id="main-title">
+        DashBoard
+      </h1>
       <div className="dash-container">
         <Portfolio user={user} stocks={stocks} />
         <div className="user-stats">
@@ -155,4 +155,3 @@ const fetchStockData = async () => {
 };
 
 export default DashBoard;
-

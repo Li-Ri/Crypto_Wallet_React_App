@@ -41,7 +41,7 @@ const BuySellCrypto = ({ buySellCrypto, stocks, user, sellStock }) => {
           <button onClick={handleClickBuy}>Buy</button>
           <button onClick={handleClickSell}>Sell</button>
         </h2>
-        <form onSubmit={buySellCrypto} id="buy" value="buy" class="hidden">
+        <form onSubmit={buySellCrypto} id="buy" value="buy" className="hidden">
           <label htmlFor="amount">Buy</label>
           <select id="id">
             <option value="">Please pick a coin</option>
@@ -50,7 +50,7 @@ const BuySellCrypto = ({ buySellCrypto, stocks, user, sellStock }) => {
           <input type="number" id="amount" min="0.001" step="0.001" />
           <input type="submit" value="Buy Stock" />
         </form>
-        <form onSubmit={sellStock} id="sell" value="sell" class="hidden">
+        <form onSubmit={sellStock} id="sell" value="sell" className="hidden">
           <label htmlFor="amount">Sell</label>
           <select id="id">
             <option value="">Select Stock to Sell</option>
