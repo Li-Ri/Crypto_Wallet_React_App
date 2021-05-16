@@ -11,4 +11,9 @@ describe("DashBoard", () => {
     const title = container.getByTestId("dashboard-title");
     expect(title).toHaveTextContent("DashBoard");
   });
+
+  it("Should have a portfolio with an initial length of zero", () => {
+    const cryptoDetail = container.getByTestId("portfolio");
+    expect(cryptoDetail.innerHTML).toEqual("");
+  });
 });

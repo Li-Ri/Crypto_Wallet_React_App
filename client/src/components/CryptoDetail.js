@@ -22,7 +22,7 @@ const CryptoDetail = ({ user, stock, stocks }) => {
           history={stock.history}
         />
         {dataShown ? (
-          <div className="stock-data">
+          <div data-testid="crypto-detail" className="stock-data">
             <h4>Stock Owned:{userStock ? userStock.toFixed(5) : null}</h4>
             <h4>
               Value:
