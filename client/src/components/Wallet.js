@@ -9,14 +9,18 @@ const Wallet = ({ user, addRemoveCash }) => {
     <>
       <div className="stat">
         <h2>Wallet</h2>
-        <h3>${user.cash ? user.cash.toFixed(2) : null}</h3>
+        <h3 data-testid="wallet-total">
+          ${user.cash ? user.cash.toFixed(2).toString() : null}
+        </h3>
         <h4>
-          <button onClick={handleClick}>Add Cash to Account</button>
+          <button data-testid="add-money" onClick={handleClick}>
+            Add Cash to Account
+          </button>
         </h4>
         <form onSubmit={addRemoveCash} className="hidden" id="add">
           <label htmlFor="amount">Amount</label>
-          <input type="text" id="amount" />
-          <input type="submit" />
+          <input data-testid="wallet-form" type="text" id="amount" />
+          <input data-testid="wallet-form-submit" type="submit" />
         </form>
       </div>
     </>
