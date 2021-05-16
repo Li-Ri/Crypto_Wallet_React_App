@@ -44,18 +44,18 @@ const DashBoard = () => {
         priceChange: 0,
       };
       const response = await fetch(
-        `https://min-api.cryptocompare.com/data/v2/histominute?fsym=${crypto}&tsym=USD&limit=50&apikey=73d9942c2e64587f8d08f7b28057a8cf20c35fb6e7b7dd401d5ed7ad3d0a9fbe`
+        `https://min-api.cryptocompare.com/data/v2/histominute?fsym=${crypto}&tsym=USD&limit=50&apikey=59b35b675652b662e60f90181e3945c0f2919ca3b6d69752979393c9805c608a`
       );
       const json = await response.json();
       const responseFinage = await fetch(
-        `https://api.finage.co.uk/last/crypto/detailed/${crypto.toLowerCase()}usd?apikey=API_KEY09COSHVGIAFJRSHBZFFM71RUY6GJ1NVQ`
+        `https://api.finage.co.uk/last/crypto/detailed/${crypto.toLowerCase()}usd?apikey=API_KEY3578X2QWUM2W8WYIUX4ZDXLIYJPKFBK3`
       );
       const jsonFinage = await responseFinage.json();
-      new_object.name = await jsonFinage.name;
-      new_object.symbol = await jsonFinage.symbol;
-      new_object.currentPrice = await json.Data.Data[0].close;
-      new_object.priceChange = await jsonFinage.changesPercentage;
-      new_object.history = await json.Data.Data;
+      new_object.name = jsonFinage.name;
+      new_object.symbol = jsonFinage.symbol;
+      new_object.currentPrice = json.Data.Data[0].close;
+      new_object.priceChange = jsonFinage.changesPercentage;
+      new_object.history = json.Data.Data;
       stocksFinal.push(new_object);
     }
     setStocks(stocksFinal);
