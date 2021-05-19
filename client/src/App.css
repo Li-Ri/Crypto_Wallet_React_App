@@ -140,3 +140,20 @@ input[type="number"] {
   background: transparent;
   border-bottom: 1px solid white;
 }
+
+/* login form */
+
+.form-login {
+  margin: 200px auto 0 auto;
+  border: 1px solid black;
+  width: 40%;
+}
+
+.login-input {
+  display: flex;
+  margin: auto;
+}
+
+.login-label {
+  margin: auto;
+}
