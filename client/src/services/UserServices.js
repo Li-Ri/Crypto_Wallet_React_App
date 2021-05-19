@@ -11,4 +11,9 @@ export const UserService = {
       headers: { "Content-type": "application/json" },
     }).then((res) => res.json());
   },
+  findUser: (id) => {
+    return fetch(baseUrl + id).then((res) => {
+      return res.json();
+    });
+  },
 };

@@ -1,8 +1,10 @@
 import React from "react";
 import { UserService } from "../services/UserServices";
 import Signup from "../components/Signup";
+import { Redirect, Router } from "react-router";
+import DashBoard from "../containers/DashBoard";
 
-const Login = ({ setUser }) => {
+const Login = ({ user, setUser }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const username = event.target.username.value;
@@ -13,13 +15,14 @@ const Login = ({ setUser }) => {
     });
     if (foundUser[0].password == password) {
       setUser(foundUser[0]);
+      sessionStorage.setItem("user_id", foundUser[0]._id);
     } else {
       event.target.reset();
     }
   };
   return (
     <>
-      <form action="/" onSubmit={handleSubmit}>
+      <form action="/dashboard" onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input type="text" name="username" />
         <label htmlFor="password">Password:</label>
