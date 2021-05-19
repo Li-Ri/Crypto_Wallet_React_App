@@ -18,6 +18,8 @@ html {
 }
 
 .form-login {
+  display: flex;
+  flex-direction: column;
   margin: 150px auto 0 auto;
   width: 40%;
   padding: 20px;
@@ -28,8 +30,26 @@ html {
 
 .login-input {
   display: flex;
-  margin: auto;
-  border: 1px solid #008080;
+  margin: 5px auto;
+  width: 80%;
+  padding: 10px;
+}
+
+input[type="text"] {
+  border-bottom: 1px solid grey;
+  font-size: large;
+  text-align: center;
+}
+
+input[type="submit"] {
+  width: 30%;
+  display: block;
+  margin: 20px auto 0;
+  height: 30px;
+  background-color: #008080;
+  color: white;
+  border: none;
+  font-weight: bold;
 }
 
 .login-label {
@@ -40,4 +60,20 @@ html {
   display: block;
   text-align: center;
   margin-top: 10px;
+}
+
+.redirect a {
+  color: grey;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.redirect a:hover,
+.redirect a:active {
+  color: black;
+  font-weight: bold;
+}
+
+.redirect {
+  margin-top: 20px;
 }

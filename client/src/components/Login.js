@@ -27,16 +27,24 @@ const Login = ({ user, setUser }) => {
       <h1 id="login-title">CryptoBite</h1>
       <form action="/dashboard" onSubmit={handleSubmit} className="form-login">
         <h2 className="login-form-title">Login</h2>
-        <label className="login-label" htmlFor="username">
-          Username:
-        </label>
-        <input className="login-input" type="text" name="username" />
-        <label className="login-label" htmlFor="password">
-          Password:
-        </label>
-        <input className="login-input" type="text" name="password" />
-        <input type="submit" value="Login" />
-        <a href="/signup">Dont have an Account? Sign up Here</a>
+
+        <input
+          className="login-input"
+          type="text"
+          name="username"
+          placeholder="Username"
+        />
+
+        <input
+          className="login-input"
+          type="text"
+          name="password"
+          placeholder="Password"
+        />
+        <input type="submit" value="login" />
+        <h4 className="login-form-title redirect">
+          <a href="/signup">Dont have an Account? Sign up Here</a>
+        </h4>
       </form>
       <a href="https://github.com/Li-Ri" id="github-logo">
         <img src={github} alt="" />
