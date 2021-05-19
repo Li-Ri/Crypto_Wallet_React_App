@@ -3,7 +3,8 @@ import { UserService } from "../services/UserServices";
 import Signup from "../components/Signup";
 import { Redirect, Router } from "react-router";
 import DashBoard from "../containers/DashBoard";
-import "../App.css";
+import "../Login.css";
+import github from "../images/github.png";
 
 const Login = ({ user, setUser }) => {
   const handleSubmit = async (event) => {
@@ -23,7 +24,9 @@ const Login = ({ user, setUser }) => {
   };
   return (
     <>
+      <h1 id="login-title">CryptoBite</h1>
       <form action="/dashboard" onSubmit={handleSubmit} className="form-login">
+        <h2 className="login-form-title">Login</h2>
         <label className="login-label" htmlFor="username">
           Username:
         </label>
@@ -33,8 +36,11 @@ const Login = ({ user, setUser }) => {
         </label>
         <input className="login-input" type="text" name="password" />
         <input type="submit" value="Login" />
+        <a href="/signup">Dont have an Account? Sign up Here</a>
       </form>
-      <a href="/signup">Dont have an Account? Sign up Here</a>
+      <a href="https://github.com/Li-Ri" id="github-logo">
+        <img src={github} alt="" />
+      </a>
     </>
   );
 };

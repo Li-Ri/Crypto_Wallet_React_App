@@ -1,0 +1,43 @@
+/* login form */
+
+html {
+  height: 100%;
+  background: linear-gradient(190deg, #008080 38%, #e7feff 20%);
+}
+
+#login-title {
+  color: white;
+  padding: 30px;
+  font-family: Tahoma, sans-serif;
+}
+
+.login-form-title {
+  color: #008080;
+  margin: 5px;
+  text-align: center;
+}
+
+.form-login {
+  margin: 150px auto 0 auto;
+  width: 40%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 1px 1px 19px 3px rgba(0, 0, 0, 0.2);
+}
+
+.login-input {
+  display: flex;
+  margin: auto;
+  border: 1px solid #008080;
+}
+
+.login-label {
+  margin: auto;
+}
+
+#github-logo {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
