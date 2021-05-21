@@ -10,7 +10,6 @@ import BuySellCrypto from "../components/BuySellCrypto";
 import ProfitLoss from "../components/ProfitLoss";
 import fetch from "node-fetch";
 import NavBar from "../components/NavBar";
-import Login from "../components/Login";
 
 const DashBoard = ({ user, setUser }) => {
   const [stocks, setStocks] = useState([]);
@@ -125,7 +124,7 @@ const DashBoard = ({ user, setUser }) => {
 
   return (
     <>
-      <NavBar />
+      <NavBar name={user.name} />
       <h1 data-testid="dashboard-title" id="main-title">
         DashBoard
       </h1>

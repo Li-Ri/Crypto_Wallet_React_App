@@ -55,7 +55,6 @@ header > h1 {
   text-align: center;
   margin: 8px;
   border-radius: 12px;
-  box-shadow: 1px 1px 19px 3px rgba(0, 0, 0, 0.2);
 }
 
 .user-stats {
@@ -88,15 +87,16 @@ header > h1 {
   display: flex;
   width: 100%;
   background: none;
-  transition: background 2s;
+  transition: background 1s;
   border-radius: 8px;
   font-family: inherit;
   color: #008080;
+  box-shadow: 1px 1px 19px 3px rgba(0, 0, 0, 0.2);
 }
 
 .stock-container:hover,
 .stock-container:active {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 10%, transparent);
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 8px;
   color: white;
 }
