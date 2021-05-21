@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, Route, Router } from "react-router-dom";
+import Login from "../components/Login";
 import "../App.css";
 const NavBar = ({ name }) => {
   const handleLogout = () => {
@@ -9,7 +10,6 @@ const NavBar = ({ name }) => {
   return (
     <header className="header">
       <h1>CryptoBite</h1>
-
       <ul className="main-nav">
         <li data-testid="nav-link" className="main-nav__link">
           <Link to="/dashboard">DashBoard</Link>

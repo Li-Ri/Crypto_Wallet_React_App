@@ -27,7 +27,10 @@ const App = () => {
     return (
       <>
         <Router>
-          <Redirect to="/login" />
+          {window.location.pathname == "/" ||
+          window.location.pathname == "/dashboard" ? (
+            <Redirect to="/login" />
+          ) : null}
           <Route
             component={() => <Login setUser={setUser} user={user} />}
             path="/login"
