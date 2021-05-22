@@ -5,12 +5,13 @@ import { Redirect, Router } from "react-router";
 import DashBoard from "../containers/DashBoard";
 import "../Login.css";
 import github from "../images/github.png";
+const md5 = require("md5");
 
 const Login = ({ user, setUser }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const username = event.target.username.value;
-    const password = event.target.password.value;
+    const password = md5(event.target.password.value);
     const users = await UserService.getUsers();
     const foundUser = await users.filter((user) => {
       return user.email == username;
