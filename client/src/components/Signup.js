@@ -8,7 +8,6 @@ const Signup = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const passwordConfirm = event.target.passwordConfirm.value;
-    console.log(name, email, password, passwordConfirm);
     if (password == passwordConfirm) {
       const newUser = {
         name: name,
