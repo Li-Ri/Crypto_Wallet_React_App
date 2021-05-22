@@ -16,4 +16,13 @@ export const UserService = {
       return res.json();
     });
   },
+  insertUser: (user) => {
+    return fetch(baseUrl, {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: { "Content-type": "application/json" },
+    }).then((res) => {
+      return res.json();
+    });
+  },
 };
