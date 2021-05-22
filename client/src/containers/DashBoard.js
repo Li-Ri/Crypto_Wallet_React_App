@@ -9,14 +9,10 @@ import Investment from "../components/Investment";
 import BuySellCrypto from "../components/BuySellCrypto";
 import ProfitLoss from "../components/ProfitLoss";
 import fetch from "node-fetch";
+import NavBar from "../components/NavBar";
 
-const DashBoard = () => {
+const DashBoard = ({ user, setUser }) => {
   const [stocks, setStocks] = useState([]);
-  const [user, setUser] = useState({});
-
-  const fetchUser = () => {
-    UserService.getUsers().then((users) => setUser(users[0]));
-  };
 
   const fetchStockData = async () => {
     const cryptos = [
@@ -60,14 +56,10 @@ const DashBoard = () => {
     }
     setStocks(stocksFinal);
   };
+
   useEffect(() => {
-    fetchUser();
     fetchStockData();
   }, []);
-
-  if (!user || !stocks) {
-    return null;
-  }
 
   const addRemoveCash = (event) => {
     event.preventDefault();
@@ -129,8 +121,10 @@ const DashBoard = () => {
 
     event.target.reset();
   };
+
   return (
     <>
+      <NavBar name={user.name} />
       <h1 data-testid="dashboard-title" id="main-title">
         DashBoard
       </h1>

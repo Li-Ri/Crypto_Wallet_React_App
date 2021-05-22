@@ -37,6 +37,13 @@ const UserRoute = function (collection) {
       });
   });
 
+  router.post("/", (req, res) => {
+    const user = req.body;
+    collection
+      .insertOne(user)
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+  });
   // update Specific User
   router.put("/:id", (req, res) => {
     const updated = req.body;

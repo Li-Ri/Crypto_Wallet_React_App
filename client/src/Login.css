@@ -1,0 +1,87 @@
+/* login form */
+
+#root {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+.login-page {
+  height: 100%;
+  background: linear-gradient(190deg, #008080 38%, #e7feff 0%);
+  background-size: cover;
+}
+
+#login-title {
+  color: white;
+  padding: 30px;
+  font-family: Tahoma, sans-serif;
+}
+
+.login-form-title {
+  color: #008080;
+  margin: 5px;
+  text-align: center;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  margin: 150px auto 0 auto;
+  width: 40%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 1px 1px 19px 3px rgba(0, 0, 0, 0.2);
+}
+
+.login-input {
+  display: flex;
+  margin: 5px auto;
+  width: 80%;
+  padding: 10px;
+}
+
+input[type="text"] {
+  border-bottom: 1px solid grey;
+  font-size: large;
+  text-align: center;
+}
+
+input[type="submit"] {
+  width: 30%;
+  display: block;
+  margin: 20px auto 0;
+  height: 30px;
+  background-color: #008080;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.login-label {
+  margin: auto;
+}
+
+#github-logo {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.redirect a {
+  color: grey;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.redirect a:hover,
+.redirect a:active {
+  color: black;
+  font-weight: bold;
+}
+
+.redirect {
+  margin-top: 20px;
+}

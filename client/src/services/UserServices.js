@@ -11,4 +11,18 @@ export const UserService = {
       headers: { "Content-type": "application/json" },
     }).then((res) => res.json());
   },
+  findUser: (id) => {
+    return fetch(baseUrl + id).then((res) => {
+      return res.json();
+    });
+  },
+  insertUser: (user) => {
+    return fetch(baseUrl, {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: { "Content-type": "application/json" },
+    }).then((res) => {
+      return res.json();
+    });
+  },
 };

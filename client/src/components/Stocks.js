@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import CryptoItem from "./CryptoItem";
-import {Cryptos} from '../services/ApiServices'
-
+import { Cryptos } from "../services/ApiServices";
+import NavBar from "../components/NavBar";
 const Stocks = () => {
-
   const [stocks, setStocks] = useState([]);
 
   const fetchStockData = async () => {
@@ -48,25 +47,22 @@ const Stocks = () => {
     }
     setStocks(stocksFinal);
   };
-  
+
   useEffect(() => {
     fetchStockData();
-  }, [])
+  }, []);
   let StocksItems;
-if (stocks){
-  StocksItems = stocks.map((stock, index) => {
-    return <CryptoItem stock = {stock} key = {index} />
-  })
-}
-    return(
-      <div>
-        <p>{StocksItems}</p>
-      </div>
-    );
+  if (stocks) {
+    StocksItems = stocks.map((stock, index) => {
+      return <CryptoItem stock={stock} key={index} />;
+    });
   }
-
-
-
-
+  return (
+    <div>
+      <NavBar />
+      <p>{StocksItems}</p>
+    </div>
+  );
+};
 
 export default Stocks;
