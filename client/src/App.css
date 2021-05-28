@@ -17,6 +17,9 @@ header {
 #main-title {
   color: #008080;
   font-family: Tahoma, sans-serif;
+  background-color: #e7feff;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
 header > h1 {
@@ -48,6 +51,7 @@ header > h1 {
 .dash-container {
   display: flex;
   flex-wrap: row nowrap;
+  background-color: #e7feff;
 }
 
 .portfolio {
@@ -86,12 +90,13 @@ header > h1 {
 .stock-container {
   display: flex;
   width: 100%;
-  background: none;
+  background: white;
   transition: background 1s;
   border-radius: 8px;
   font-family: inherit;
   color: #008080;
   box-shadow: 1px 1px 19px 3px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
 }
 
 .stock-container:hover,

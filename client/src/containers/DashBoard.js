@@ -44,7 +44,7 @@ const DashBoard = ({ user, setUser }) => {
       );
       const json = await response.json();
       const responseFinage = await fetch(
-        `https://api.finage.co.uk/last/crypto/detailed/${crypto.toLowerCase()}usd?apikey=API_KEY3578X2QWUM2W8WYIUX4ZDXLIYJPKFBK3`
+        `https://api.finage.co.uk/last/crypto/detailed/${crypto.toLowerCase()}usd?apikey=API_KEY668SPSC6K1UUH2DGVZGAQFDLESC7AT7X`
       );
       const jsonFinage = await responseFinage.json();
       new_object.name = jsonFinage.name;

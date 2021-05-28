@@ -26,17 +26,17 @@ const LineChart = ({ title, symbol, history, stockData }) => {
 
   const options = {
     scales: {
-      yAxes: [
-        {
-          gridLines: {
-            display: false,
-          },
-        },
-      ],
       xAxes: [
         {
           gridLines: {
-            display: false,
+            show: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            lineWidth: 0,
           },
         },
       ],

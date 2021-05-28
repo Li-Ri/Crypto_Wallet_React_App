@@ -20,6 +20,8 @@ const Signup = () => {
       };
       UserService.insertUser(newUser);
       return event.target.reset();
+    } else {
+      event.target.reset();
     }
   };
 

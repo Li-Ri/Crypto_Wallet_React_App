@@ -24,3 +24,8 @@ In order to obtain the coin data and display it on the front end, an external ap
 ### Sign Up Page
 
 ![alt text](images/signup.png)
+
+### DashBoard
+
+![alt text](images/dashboard.png)
+![alt text](images/dash-stats.png)
