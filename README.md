@@ -21,6 +21,12 @@ Dependencies need to be installed in order for the app to run and so the followi
 
 All the dependencies should now be installed
 
+## Testing
+
+A number of unit and UI tests were written to test the app and can be ran with the following:
+
+### `npm test`
+
 ## Running the App
 
 from the server directory run:
