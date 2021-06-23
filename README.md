@@ -16,14 +16,14 @@ Expand range to not just crypto currencies but stock.
 
 ## Installation
 
-### `git clone https://github.com/Li-Ri/Crypto_Wallet_React_App.git`
+#### `git clone https://github.com/Li-Ri/Crypto_Wallet_React_App.git`
 
 Dependencies need to be installed in order for the app to run and so the following must be done:
 
 1. Navigate to client folder from the terminal
-2. ### `npm install`
+2. #### `npm install`
 3. Now navigate to server folder
-4. ### `npm install`
+4. #### `npm install`
 
 All the dependencies should now be installed
 
@@ -31,17 +31,17 @@ All the dependencies should now be installed
 
 A number of unit and UI tests were written to test the app and can be ran with the following:
 
-### `npm test`
+#### `npm test`
 
 ## Running the App
 
 from the server directory run:
 
-### `npm run server:dev`
+#### `npm run server:dev`
 
 from the client directory:
 
-### `npm start`
+#### `npm start`
 
 the app will now be running and viewable on ports 3000 and 5000.
 
