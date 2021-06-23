@@ -8,6 +8,12 @@ With Cryptos becoming more popular, the demand for apps with the ability to trac
 
 This CryptoBite app was built using an express backend with MongoDB to hold user API. The frontend was built using React with ChartJS in order to display the historical price of coins.
 
+## Future Work
+
+Adding predictive modelling for the price of coins.
+Expand range to not just crypto currencies but stock.
+
+
 ## Installation
 
 ### `git clone https://github.com/Li-Ri/Crypto_Wallet_React_App.git`
